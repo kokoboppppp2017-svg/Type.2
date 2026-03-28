@@ -83,7 +83,7 @@ section:nth-child(even){background:white;}
 .vtab-panel.active{display:block;}
 
 /* LIVE — 9:16 가로스크롤 */
-.live-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.live-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;user-select:none;}
 .live-scroll::-webkit-scrollbar{display:none;}
 .live-card{flex:0 0 auto;width:140px;display:flex;flex-direction:column;text-decoration:none;}
 .live-thumb{width:140px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1a3a5c,#2a6499);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
@@ -121,7 +121,7 @@ section:nth-child(even) .mc-card{background:var(--off-white);}
 .mc-meta{font-size:11px;color:var(--text-light);line-height:1.6;}
 
 /* 숏츠 — 9:16 가로스크롤 */
-.shorts-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.shorts-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;user-select:none;}
 .shorts-scroll::-webkit-scrollbar{display:none;}
 .shorts-card{flex:0 0 auto;width:150px;display:flex;flex-direction:column;text-decoration:none;}
 .shorts-thumb{width:150px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1a2a3c,#2a4a6a);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
@@ -149,7 +149,7 @@ section:nth-child(even) .cert-card{background:var(--off-white);}
 /* GALLERY */
 #gallery{padding:44px 0;}
 #gallery .section-label,#gallery .section-title{padding:0 22px;}
-.gallery-scroll{display:flex;gap:9px;overflow-x:auto;padding:0 22px 10px;scrollbar-width:none;}
+.gallery-scroll{display:flex;gap:9px;overflow-x:auto;padding:0 22px 10px;scrollbar-width:none;user-select:none;}
 .gallery-scroll::-webkit-scrollbar{display:none;}
 .g-item{flex:0 0 auto;width:130px;aspect-ratio:3/4;border-radius:13px;overflow:hidden;background:linear-gradient(150deg,var(--sky-light),#dceeff);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--text-light);font-size:10px;}
 .g-item img{width:100%;height:100%;object-fit:cover;}
