@@ -610,6 +610,25 @@ footer{text-align:center;padding:22px;font-size:10.5px;color:var(--text-light);b
   },{rootMargin:'-40% 0px -55% 0px'});
   secs.forEach(function(s){navObs.observe(s);});
 })();
+  // 마우스 드래그 스크롤
+document.querySelectorAll('.gallery-scroll,.live-scroll,.shorts-scroll').forEach(function(el){
+  var isDown=false, startX, scrollLeft;
+  el.addEventListener('mousedown',function(e){
+    isDown=true;
+    startX=e.pageX-el.offsetLeft;
+    scrollLeft=el.scrollLeft;
+    el.style.cursor='grabbing';
+  });
+  el.addEventListener('mouseleave',function(){isDown=false;el.style.cursor='grab';});
+  el.addEventListener('mouseup',function(){isDown=false;el.style.cursor='grab';});
+  el.addEventListener('mousemove',function(e){
+    if(!isDown)return;
+    e.preventDefault();
+    var x=e.pageX-el.offsetLeft;
+    el.scrollLeft=scrollLeft-(x-startX)*1.5;
+  });
+  el.style.cursor='grab';
+});
 </script>
 </body>
 </html>
