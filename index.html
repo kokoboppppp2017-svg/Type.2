@@ -629,6 +629,23 @@ document.querySelectorAll('.gallery-scroll,.live-scroll,.shorts-scroll').forEach
   });
   el.style.cursor='grab';
 });
+  // 갤러리 사진 클릭시 모달
+var modal=document.createElement('div');
+modal.style.cssText='display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center;padding:40px;';
+modal.innerHTML='<img id="modalImg" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;"><div style="position:absolute;top:16px;right:20px;color:white;font-size:28px;cursor:pointer;" onclick="closeModal()">✕</div>';
+document.body.appendChild(modal);
+modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+
+function closeModal(){modal.style.display='none';}
+window.closeModal=closeModal;
+
+document.querySelectorAll('.g-item img, .gg-item img').forEach(function(img){
+  img.style.cursor='pointer';
+  img.addEventListener('click',function(){
+    document.getElementById('modalImg').src=this.src;
+    modal.style.display='flex';
+  });
+});
 </script>
 </body>
 </html>
