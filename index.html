@@ -111,9 +111,8 @@ section:nth-child(even) .bc-card{background:var(--off-white);}
 
 /* MC 사진 가로 카드 */
 .mc-section-title{font-size:11px;font-weight:800;color:var(--text-light);letter-spacing:.1em;text-transform:uppercase;margin:20px 0 10px;}
-.mc-card{display:flex;gap:0;align-items:stretch;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:10px;}
-section:nth-child(even) .mc-card{background:var(--off-white);}
-.mc-photo{flex:0 0 88px;width:88px;background:linear-gradient(160deg,var(--sky-light),#c8e8ff);display:flex;align-items:center;justify-content:center;font-size:30px;overflow:hidden;}
+.mc-card{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:10px;}
+.mc-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,var(--sky-light),#c8e8ff);display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .mc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
 .mc-body{flex:1;padding:14px;}
 .mc-tag{font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--sky-deep);text-transform:uppercase;margin-bottom:4px;}
@@ -382,23 +381,24 @@ footer{text-align:center;padding:22px;font-size:10.5px;color:var(--text-light);b
       </a>
     </div>
     <p class="mc-section-title">MC 행사 현장</p>
-    <div class="mc-card">
-      <div class="mc-photo"><img src="mc1.jpg" alt="기업 행사 MC"></div>
-      <div class="mc-body">
-        <div class="mc-tag">EVENT MC</div>
-        <div class="mc-title">기업 신제품 런칭 행사</div>
-        <div class="mc-meta">전문 행사 MC 진행 · 2025.10</div>
-      </div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+  <div class="mc-card">
+    <div class="mc-photo"><img src="mc1.jpg" alt="기업 행사 MC" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="mc-body">
+      <div class="mc-tag">EVENT MC</div>
+      <div class="mc-title">기업 신제품 런칭 행사</div>
+      <div class="mc-meta">2025.10</div>
     </div>
-    <div class="mc-card">
-      <div class="mc-photo"><img src="mc2.jpg" alt="기업 세미나 MC"></div>
-      <div class="mc-body">
-        <div class="mc-tag">SEMINAR MC</div>
-        <div class="mc-title">기업 세미나 진행</div>
-        <div class="mc-meta">컨퍼런스 MC · 2025.07</div>
-      </div>
+  </div>
+  <div class="mc-card">
+    <div class="mc-photo"><img src="mc2.jpg" alt="기업 세미나 MC" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="mc-body">
+      <div class="mc-tag">SEMINAR MC</div>
+      <div class="mc-title">기업 세미나 진행</div>
+      <div class="mc-meta">2025.07</div>
     </div>
-    </div>
+  </div>
+</div>
   <!-- 탭 2: 브랜드 협업 — 숏츠 9:16 가로스크롤 -->
   <div class="vtab-panel" id="vp2">
     <p class="shorts-note">브랜드 바이럴 숏츠 콘텐츠 · 옆으로 스크롤하세요</p>
