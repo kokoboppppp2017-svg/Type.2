@@ -1,1 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>장쇼호 | 쇼호스트 & 아나운서 포트폴리오</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#5BB8F5;--sky-light:#EBF6FF;--sky-mid:#B8DEFF;
+  --sky-dark:#2A87CC;--sky-deep:#1A5F96;
+  --off-white:#F7FBFF;--white:#fff;
+  --text-dark:#0D2137;--text-mid:#2C5070;--text-light:#6A90B0;
+  --kakao:#FEE500;--kakao-text:#3A1D1D;
+  --border:rgba(91,184,245,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nanum Gothic',sans-serif;background:var(--off-white);color:var(--text-dark);max-width:480px;margin:0 auto;overflow-x:hidden;}
 
+/* NAV */
+nav{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:999;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 4px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-inner a{flex:0 0 auto;padding:13px 12px;font-size:11.5px;font-weight:700;color:var(--text-light);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.nav-inner a:hover,.nav-inner a.active{color:var(--sky-dark);border-bottom-color:var(--sky);}
+
+/* HERO */
+#hero{padding-top:48px;background:linear-gradient(160deg,#EBF6FF 0%,#F7FBFF 55%,#E8F4FF 100%);position:relative;overflow:hidden;}
+.hero-deco{position:absolute;top:-80px;right:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(91,184,245,0.12),transparent 70%);pointer-events:none;}
+.hero-inner{display:flex;flex-direction:column;padding:28px 22px 0;}
+.hero-text{display:flex;flex-direction:column;padding-bottom:26px;}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--sky-light);border:1px solid var(--sky-mid);color:var(--sky-dark);font-size:10px;font-weight:800;padding:5px 12px;border-radius:20px;letter-spacing:.06em;margin-bottom:16px;width:fit-content;}
+.hero-tag::before{content:'';width:5px;height:5px;background:var(--sky);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.4);}}
+.hero-name{font-family:'Nanum Myeongjo',serif;font-size:54px;font-weight:700;line-height:1.0;color:var(--text-dark);margin-bottom:4px;}
+.hero-name span{color:var(--sky-dark);}
+.hero-sub{font-size:11px;letter-spacing:.12em;color:var(--text-light);margin-bottom:20px;}
+.hero-quote{font-size:15px;line-height:1.85;color:var(--text-mid);border-left:3px solid var(--sky);padding-left:14px;margin-bottom:22px;}
+.hero-quote strong{font-weight:800;color:var(--sky-deep);}
+.hero-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.hero-chip{font-size:10px;font-weight:700;color:var(--sky-deep);background:var(--sky-light);border:1px solid var(--sky-mid);border-radius:8px;padding:4px 10px;}
+
+/* SLIDE */
+.hero-slide-wrap{width:100%;aspect-ratio:3/4;border-radius:20px 20px 0 0;overflow:hidden;position:relative;background:var(--sky-light);}
+.slide-track{display:flex;width:200%;height:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);}
+.slide-item{width:50%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:linear-gradient(160deg,var(--sky-light),#dceeff);color:var(--text-light);}
+.slide-item .ph-icon{width:60px;height:60px;border-radius:50%;background:rgba(91,184,245,0.2);display:flex;align-items:center;justify-content:center;font-size:28px;}
+.slide-item img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.slide-item span{font-size:12px;}
+.slide-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;}
+.dot{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.5);transition:all .3s;cursor:pointer;}
+.dot.active{background:white;width:18px;}
+
+/* SECTION BASE */
+section{padding:44px 22px;}
+section:nth-child(even){background:white;}
+.section-label{font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--sky-dark);text-transform:uppercase;margin-bottom:5px;}
+.section-title{font-family:'Nanum Myeongjo',serif;font-size:24px;font-weight:700;color:var(--text-dark);margin-bottom:22px;line-height:1.3;}
+
+/* STATS */
+.stats-banner{background:linear-gradient(135deg,var(--sky-deep) 0%,var(--sky-dark) 100%);border-radius:18px;padding:22px 12px;display:flex;}
+.stat-big{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.15);padding:0 6px;}
+.stat-big:last-child{border-right:none;}
+.stat-big .num{font-family:'Nanum Myeongjo',serif;font-size:22px;font-weight:700;color:white;line-height:1;}
+.stat-big .lbl{font-size:9px;color:rgba(255,255,255,.65);margin-top:6px;line-height:1.5;}
+
+/* CAREER */
+.timeline{position:relative;padding-left:18px;}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--sky),var(--sky-light));}
+.tl-item{position:relative;margin-bottom:24px;padding-left:16px;}
+.tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--sky);border:2px solid white;}
+.tl-year{font-size:10px;font-weight:800;color:var(--sky-dark);letter-spacing:.05em;margin-bottom:3px;}
+.tl-title{font-size:14px;font-weight:800;color:var(--text-dark);margin-bottom:4px;}
+.tl-desc{font-size:12px;color:var(--text-light);line-height:1.7;}
+
+/* VIDEO TABS */
+.vtab-nav{display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;scrollbar-width:none;}
+.vtab-nav::-webkit-scrollbar{display:none;}
+.vtab{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--text-light);background:transparent;border:1.5px solid var(--border);border-radius:20px;padding:7px 16px;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'Nanum Gothic',sans-serif;}
+.vtab.active{background:var(--sky-deep);color:white;border-color:var(--sky-deep);}
+.vtab-panel{display:none;}
+.vtab-panel.active{display:block;}
+
+/* LIVE — 9:16 가로스크롤 */
+.live-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.live-scroll::-webkit-scrollbar{display:none;}
+.live-card{flex:0 0 auto;width:140px;display:flex;flex-direction:column;text-decoration:none;}
+.live-thumb{width:140px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1a3a5c,#2a6499);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+.live-thumb img{width:100%;height:100%;object-fit:cover;}
+.live-badge{position:absolute;top:8px;left:8px;background:rgba(255,0,0,.85);color:white;font-size:9px;font-weight:800;padding:3px 7px;border-radius:5px;letter-spacing:.05em;}
+.live-play{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;}
+.live-platform{position:absolute;bottom:8px;right:8px;background:rgba(255,255,255,.15);backdrop-filter:blur(4px);color:white;font-size:9px;font-weight:700;padding:3px 7px;border-radius:5px;}
+.live-ph{font-size:28px;opacity:.7;}
+.live-info{padding:8px 2px 0;}
+.live-title{font-size:12px;font-weight:800;color:var(--text-dark);line-height:1.4;margin-bottom:2px;}
+.live-meta{font-size:10px;color:var(--text-light);}
+
+/* 방송출연 세로 카드 */
+.bc-list{display:flex;flex-direction:column;gap:14px;}
+.bc-card{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .2s;}
+section:nth-child(even) .bc-card{background:var(--off-white);}
+.bc-card:hover{transform:translateY(-2px);}
+.bc-photo{width:100%;aspect-ratio:16/9;background:linear-gradient(160deg,var(--sky-light),#c8e8ff);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.bc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.bc-ph{font-size:44px;opacity:.55;}
+.yt-btn{position:absolute;bottom:12px;right:12px;background:rgba(200,0,0,.92);color:white;font-size:10px;font-weight:800;padding:6px 12px;border-radius:8px;display:flex;align-items:center;gap:4px;text-decoration:none;}
+.bc-body{padding:14px 16px;}
+.bc-title{font-size:14px;font-weight:800;color:var(--text-dark);margin-bottom:4px;}
+.bc-meta{font-size:11px;color:var(--text-light);line-height:1.6;}
+
+/* MC 사진 가로 카드 */
+.mc-section-title{font-size:11px;font-weight:800;color:var(--text-light);letter-spacing:.1em;text-transform:uppercase;margin:20px 0 10px;}
+.mc-card{display:flex;gap:0;align-items:stretch;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:10px;}
+section:nth-child(even) .mc-card{background:var(--off-white);}
+.mc-photo{flex:0 0 88px;width:88px;background:linear-gradient(160deg,var(--sky-light),#c8e8ff);display:flex;align-items:center;justify-content:center;font-size:30px;overflow:hidden;}
+.mc-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.mc-body{flex:1;padding:14px;}
+.mc-tag{font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--sky-deep);text-transform:uppercase;margin-bottom:4px;}
+.mc-title{font-size:13px;font-weight:800;color:var(--text-dark);margin-bottom:4px;line-height:1.4;}
+.mc-meta{font-size:11px;color:var(--text-light);line-height:1.6;}
+
+/* 숏츠 — 9:16 가로스크롤 */
+.shorts-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.shorts-scroll::-webkit-scrollbar{display:none;}
+.shorts-card{flex:0 0 auto;width:150px;display:flex;flex-direction:column;text-decoration:none;}
+.shorts-thumb{width:150px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1a2a3c,#2a4a6a);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+.shorts-thumb img{width:100%;height:100%;object-fit:cover;}
+.shorts-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.6);color:white;font-size:9px;font-weight:800;padding:3px 7px;border-radius:5px;letter-spacing:.06em;}
+.shorts-play{position:absolute;bottom:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;}
+.shorts-ph{font-size:32px;opacity:.8;}
+.shorts-info{padding:8px 2px 0;}
+.shorts-title{font-size:11.5px;font-weight:800;color:var(--text-dark);line-height:1.4;margin-bottom:2px;}
+.shorts-meta{font-size:10px;color:var(--text-light);}
+.shorts-note{font-size:11px;color:var(--text-light);margin-bottom:14px;line-height:1.6;}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cert-card{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 12px;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+section:nth-child(even) .cert-card{background:var(--off-white);}
+.cert-card:hover,.cert-card.show-tip{transform:translateY(-2px);box-shadow:0 6px 20px rgba(91,184,245,.15);}
+.cert-name{font-size:11.5px;font-weight:800;color:var(--text-dark);line-height:1.4;margin-bottom:3px;}
+.cert-year{font-size:10px;color:var(--text-light);}
+.cert-tooltip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:var(--text-dark);color:white;font-size:10.5px;line-height:1.55;padding:9px 11px;border-radius:10px;width:190px;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20;white-space:normal;}
+.cert-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--text-dark);}
+.cert-card:hover .cert-tooltip,.cert-card.show-tip .cert-tooltip{opacity:1;}
+.certs-hint{font-size:11px;color:var(--text-light);text-align:center;margin-top:10px;}
+
+/* GALLERY */
+#gallery{padding:44px 0;}
+#gallery .section-label,#gallery .section-title{padding:0 22px;}
+.gallery-scroll{display:flex;gap:9px;overflow-x:auto;padding:0 22px 10px;scrollbar-width:none;}
+.gallery-scroll::-webkit-scrollbar{display:none;}
+.g-item{flex:0 0 auto;width:130px;aspect-ratio:3/4;border-radius:13px;overflow:hidden;background:linear-gradient(150deg,var(--sky-light),#dceeff);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--text-light);font-size:10px;}
+.g-item img{width:100%;height:100%;object-fit:cover;}
+.g-ph{font-size:26px;}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 22px;margin-top:9px;}
+.gg-item{aspect-ratio:1;border-radius:13px;background:linear-gradient(135deg,#dceeff,var(--sky-light));display:flex;align-items:center;justify-content:center;color:var(--sky-dark);font-size:28px;}
+
+/* SNS */
+.sns-list{display:flex;flex-direction:column;gap:9px;}
+.sns-item{display:flex;align-items:center;gap:12px;border-radius:14px;padding:13px 14px;background:white;border:1px solid var(--border);text-decoration:none;transition:transform .2s;}
+section:nth-child(even) .sns-item{background:var(--off-white);}
+.sns-item:hover{transform:translateX(4px);}
+.sns-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.sns-info{flex:1;}
+.sns-name{font-size:13px;font-weight:800;color:var(--text-dark);}
+.sns-handle{font-size:11px;color:var(--text-light);margin-top:1px;}
+.sns-followers{font-size:11px;font-weight:800;color:var(--sky-deep);}
+
+/* CTA */
+#contact{background:linear-gradient(160deg,#EBF6FF 0%,#F7FBFF 100%);text-align:center;padding:52px 24px 44px;}
+.cta-hook{font-family:'Nanum Myeongjo',serif;font-size:24px;font-weight:700;line-height:1.45;color:var(--text-dark);margin-bottom:10px;}
+.cta-hook em{color:var(--sky-dark);font-style:italic;}
+.cta-sub{font-size:13px;color:var(--text-light);margin-bottom:28px;line-height:1.8;}
+.cta-buttons{display:flex;flex-direction:column;gap:10px;}
+.btn-kakao{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--kakao);color:var(--kakao-text);border:none;border-radius:14px;padding:16px 20px;font-size:14px;font-weight:800;font-family:'Nanum Gothic',sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,filter .2s;}
+.btn-kakao:hover{filter:brightness(.95);transform:translateY(-1px);}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--sky-dark);color:white;border:none;border-radius:14px;padding:15px 20px;font-size:13px;font-weight:700;font-family:'Nanum Gothic',sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,background .2s;}
+.btn-primary:hover{background:var(--sky-deep);transform:translateY(-1px);}
+.btn-secondary{display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:var(--text-mid);border:1.5px solid var(--border);border-radius:14px;padding:14px 20px;font-size:13px;font-weight:700;font-family:'Nanum Gothic',sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s;}
+.btn-secondary:hover{transform:translateY(-1px);}
+.cta-divider{display:flex;align-items:center;gap:10px;margin:22px 0 18px;color:var(--text-light);font-size:11px;}
+.cta-divider::before,.cta-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.cta-email{margin-top:22px;font-size:12px;color:var(--text-light);background:var(--sky-light);border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+.cta-email a{color:var(--sky-deep);text-decoration:none;font-weight:800;}
+
+footer{text-align:center;padding:22px;font-size:10.5px;color:var(--text-light);background:white;border-top:1px solid var(--border);}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+@media(min-width:481px){body{box-shadow:0 0 40px rgba(91,184,245,.1);}#hero .hero-inner{padding:32px 24px 0;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="active">홈</a>
+    <a href="#stats">성과</a>
+    <a href="#career">경력</a>
+    <a href="#broadcast">영상</a>
+    <a href="#certs">자격증</a>
+    <a href="#gallery">갤러리</a>
+    <a href="#sns">SNS</a>
+    <a href="#contact">연락</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:48px;padding-bottom:0;">
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">쇼호스트 &amp; 아나운서</div>
+      <h1 class="hero-name">장<span>쇼호</span></h1>
+      <p class="hero-sub">JANG SHOHO · 2026</p>
+      <p class="hero-quote">
+        첫 문장부터 마지막 콜투액션까지,<br>
+        <strong>매출로 증명해온 목소리.</strong>
+      </p>
+      <div class="hero-chips">
+        <span class="hero-chip">라이브 커머스</span>
+        <span class="hero-chip">뷰티·패션</span>
+        <span class="hero-chip">식품·헬스</span>
+        <span class="hero-chip">기업행사 MC</span>
+      </div>
+    </div>
+    <div class="hero-slide-wrap">
+      <div class="slide-track" id="slideTrack">
+        <div class="slide-item">
+          <div class="ph-icon">📸</div>
+          <span>프로필 사진 1</span>
+        </div>
+        <div class="slide-item">
+          <div class="ph-icon">🎬</div>
+          <span>프로필 사진 2</span>
+        </div>
+      </div>
+      <div class="slide-dots">
+        <div class="dot active" onclick="goSlide(0)"></div>
+        <div class="dot" onclick="goSlide(1)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="section-label">PERFORMANCE</div>
+  <h2 class="section-title">숫자가 말해주는<br>장쇼호</h2>
+  <div class="stats-banner fade-up">
+    <div class="stat-big">
+      <div class="num">100만+</div>
+      <div class="lbl">유튜브<br>누적 조회수</div>
+    </div>
+    <div class="stat-big">
+      <div class="num">120+</div>
+      <div class="lbl">라이브<br>진행 횟수</div>
+    </div>
+    <div class="stat-big">
+      <div class="num">1,000만+</div>
+      <div class="lbl">라이브 최대<br>단일 판매액</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career">
+  <div class="section-label">CAREER</div>
+  <h2 class="section-title">경력 사항</h2>
+  <div class="timeline fade-up">
+    <div class="tl-item">
+      <div class="tl-year">2022 – 현재</div>
+      <div class="tl-title">프리랜서 쇼호스트 · 아나운서</div>
+      <div class="tl-desc">뷰티·패션·식품 라이브 커머스 전문 진행<br>월 평균 10회 이상, 라디오 진행<br>지역 지상파 리포터 활동 등</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2021 – 2022</div>
+      <div class="tl-title">모바일 커머스 전속 쇼호스트</div>
+      <div class="tl-desc">S커머스 플랫폼 전속 계약<br>스킨케어·헬스케어 카테고리 담당</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2020 – 2021</div>
+      <div class="tl-title">쇼호스트 양성 과정 수료</div>
+      <div class="tl-desc">발성·발음·딕션 전문 교육 이수<br>라이브 방송 리포팅 및 MC 진행 실습</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="broadcast">
+  <div class="section-label">VIDEO</div>
+  <h2 class="section-title">활동 영상</h2>
+
+  <div class="vtab-nav">
+    <button class="vtab active" onclick="switchTab(0)">라이브커머스 진행</button>
+    <button class="vtab" onclick="switchTab(1)">방송출연 · 자기소개</button>
+    <button class="vtab" onclick="switchTab(2)">브랜드 협업 콘텐츠</button>
+  </div>
+
+  <!-- 탭 0: 라이브커머스 9:16 가로스크롤 -->
+  <div class="vtab-panel active" id="vp0">
+    <div class="live-scroll">
+      <a href="#" class="live-card" target="_blank">
+        <div class="live-thumb">
+          <span class="live-ph">💄</span>
+          <div class="live-play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="6,3 20,12 6,21"/></svg></div>
+          <span class="live-badge">LIVE</span>
+          <span class="live-platform">네이버</span>
+        </div>
+        <div class="live-info">
+          <div class="live-title">뷰티 브랜드<br>론칭 라이브</div>
+          <div class="live-meta">2025.11</div>
+        </div>
+      </a>
+      <a href="#" class="live-card" target="_blank">
+        <div class="live-thumb">
+          <span class="live-ph">👗</span>
+          <div class="live-play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="6,3 20,12 6,21"/></svg></div>
+          <span class="live-badge">LIVE</span>
+          <span class="live-platform">카카오</span>
+        </div>
+        <div class="live-info">
+          <div class="live-title">패션 특집<br>기획 방송</div>
+          <div class="live-meta">2025.09</div>
+        </div>
+      </a>
+      <a href="#" class="live-card" target="_blank">
+        <div class="live-thumb">
+          <span class="live-ph">🌿</span>
+          <div class="live-play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="6,3 20,12 6,21"/></svg></div>
+          <span class="live-badge">LIVE</span>
+          <span class="live-platform">라이프S</span>
+        </div>
+        <div class="live-info">
+          <div class="live-title">건강식품<br>완판 방송</div>
+          <div class="live-meta">2025.06</div>
+        </div>
+      </a>
+      <a href="#" class="live-card" target="_blank">
+        <div class="live-thumb">
+          <span class="live-ph">🏠</span>
+          <div class="live-play"><svg viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="6,3 20,12 6,21"/></svg></div>
+          <span class="live-badge">LIVE</span>
+          <span class="live-platform">네이버</span>
+        </div>
+        <div class="live-info">
+          <div class="live-title">리빙 제품<br>단독 론칭</div>
+          <div class="live-meta">2025.03</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 탭 1: 방송출연 · 자기소개 -->
+  <div class="vtab-panel" id="vp1">
+    <!-- 자기소개 영상 -->
+    <div class="bc-list" style="margin-bottom:16px;">
+      <a href="#" class="bc-card" target="_blank">
+        <div class="bc-photo">
+          <span class="bc-ph">🎥</span>
+          <a href="#" class="yt-btn" target="_blank">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            유튜브 보기
+          </a>
+        </div>
+        <div class="bc-body">
+          <div class="bc-title">장쇼호 자기소개 영상</div>
+          <div class="bc-meta">쇼호스트 · 아나운서 지원용 · 2026 ver.</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 리포터 출연 영상 -->
+    <div class="bc-list" style="margin-bottom:16px;">
+      <a href="#" class="bc-card" target="_blank">
+        <div class="bc-photo">
+          <span class="bc-ph">📡</span>
+          <a href="#" class="yt-btn" target="_blank">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            유튜브 보기
+          </a>
+        </div>
+        <div class="bc-body">
+          <div class="bc-title">지역 지상파 리포터 출연</div>
+          <div class="bc-meta">현장 리포팅 · 생활정보 프로그램 · 2024</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- MC 행사 — 사진 카드 -->
+    <p class="mc-section-title">MC 행사 현장</p>
+    <div class="mc-card">
+      <div class="mc-photo">🎤</div>
+      <div class="mc-body">
+        <div class="mc-tag">EVENT MC</div>
+        <div class="mc-title">기업 신제품 런칭 행사</div>
+        <div class="mc-meta">전문 행사 MC 진행 · 2025.10</div>
+      </div>
+    </div>
+    <div class="mc-card">
+      <div class="mc-photo">🏢</div>
+      <div class="mc-body">
+        <div class="mc-tag">SEMINAR MC</div>
+        <div class="mc-title">기업 세미나 진행</div>
+        <div class="mc-meta">컨퍼런스 MC · 2025.07</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 탭 2: 브랜드 협업 — 숏츠 9:16 가로스크롤 -->
+  <div class="vtab-panel" id="vp2">
+    <p class="shorts-note">브랜드 바이럴 숏츠 콘텐츠 · 옆으로 스크롤하세요</p>
+    <div class="shorts-scroll">
+      <a href="#" class="shorts-card" target="_blank">
+        <div class="shorts-thumb">
+          <span class="shorts-ph">💄</span>
+          <span class="shorts-badge">SHORTS</span>
+          <div class="shorts-play"><svg viewBox="0 0 24 24" fill="white" width="13" height="13"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
+        <div class="shorts-info">
+          <div class="shorts-title">A뷰티 스킨케어<br>바이럴 숏츠</div>
+          <div class="shorts-meta">2025.11 · 조회 12만</div>
+        </div>
+      </a>
+      <a href="#" class="shorts-card" target="_blank">
+        <div class="shorts-thumb">
+          <span class="shorts-ph">👗</span>
+          <span class="shorts-badge">SHORTS</span>
+          <div class="shorts-play"><svg viewBox="0 0 24 24" fill="white" width="13" height="13"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
+        <div class="shorts-info">
+          <div class="shorts-title">S패션 룩북<br>숏폼 콘텐츠</div>
+          <div class="shorts-meta">2025.09 · 조회 8만</div>
+        </div>
+      </a>
+      <a href="#" class="shorts-card" target="_blank">
+        <div class="shorts-thumb">
+          <span class="shorts-ph">🌿</span>
+          <span class="shorts-badge">SHORTS</span>
+          <div class="shorts-play"><svg viewBox="0 0 24 24" fill="white" width="13" height="13"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
+        <div class="shorts-info">
+          <div class="shorts-title">W헬스 제품<br>리뷰 숏츠</div>
+          <div class="shorts-meta">2025.07 · 조회 6만</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-label">CERTIFICATE</div>
+  <h2 class="section-title">자격증, 역량</h2>
+  <div class="certs-grid fade-up">
+    <div class="cert-card" tabindex="0" onclick="this.classList.toggle('show-tip')">
+      <div class="cert-name">손해보험 계약 설계사</div>
+      <div class="cert-year">2024 취득</div>
+      <div class="cert-tooltip">보험 상품 구조와 약관 이해 및 고객 맞춤 설계 제안 역량을 인증하는 국가 공인 자격</div>
+    </div>
+    <div class="cert-card" tabindex="0" onclick="this.classList.toggle('show-tip')">
+      <div class="cert-name">CS Leaders 관리사</div>
+      <div class="cert-year">2023 취득</div>
+      <div class="cert-tooltip">고객 서비스 전반을 관리·지도하는 CS 전문가 자격. 서비스 품질 향상과 고객 만족도 관리 역량 인증</div>
+    </div>
+    <div class="cert-card" tabindex="0" onclick="this.classList.toggle('show-tip')">
+      <div class="cert-name">SMAT 서비스경영</div>
+      <div class="cert-year">2023 취득</div>
+      <div class="cert-tooltip">서비스 마케팅·경영 전반의 전문 지식을 평가하는 국가 공인 민간 자격. 고객 경험 설계 역량 포함</div>
+    </div>
+    <div class="cert-card" tabindex="0" onclick="this.classList.toggle('show-tip')">
+      <div class="cert-name">KBS 한국어능력시험</div>
+      <div class="cert-year">2024 취득</div>
+      <div class="cert-tooltip">방송·언론 분야 공신력 있는 국어 능력 평가. 표준어 발음·어법·문장 표현력 종합 측정</div>
+    </div>
+    <div class="cert-card" tabindex="0" onclick="this.classList.toggle('show-tip')">
+      <div class="cert-name">스피치 지도사 2급</div>
+      <div class="cert-year">2022 취득</div>
+      <div class="cert-tooltip">발성·발음·표현력 등 스피치 전반 교육 자격. 설득력 있는 커뮤니케이션 역량 인증</div>
+    </div>
+    <div class="cert-card" tabindex="0" onclick="this.classList.toggle('show-tip')">
+      <div class="cert-name">사회조사 분석사 2급</div>
+      <div class="cert-year">2025 취득</div>
+      <div class="cert-tooltip">설문·통계 조사를 설계·분석하는 국가기술자격. 소비자 인사이트 기반 방송 기획에 활용</div>
+    </div>
+  </div>
+  <p class="certs-hint">카드를 터치하면 설명이 나타나요</p>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="padding:44px 0;background:white;">
+  <div class="section-label">GALLERY</div>
+  <h2 class="section-title">포토 갤러리</h2>
+  <div class="gallery-scroll fade-up">
+    <div class="g-item"><span class="g-ph">🎤</span><span>방송 현장</span></div>
+    <div class="g-item"><span class="g-ph">💄</span><span>뷰티 촬영</span></div>
+    <div class="g-item"><span class="g-ph">👗</span><span>패션 룩북</span></div>
+    <div class="g-item"><span class="g-ph">📸</span><span>프로필 촬영</span></div>
+    <div class="g-item"><span class="g-ph">🏙</span><span>야외 촬영</span></div>
+  </div>
+  <div class="gallery-grid fade-up" style="margin-top:9px;">
+    <div class="gg-item">✨</div>
+    <div class="gg-item">🌸</div>
+    <div class="gg-item">🎬</div>
+    <div class="gg-item">💫</div>
+    <div class="gg-item">🌟</div>
+    <div class="gg-item">🎙</div>
+  </div>
+</section>
+
+<!-- SNS -->
+<section id="sns">
+  <div class="section-label">SNS CHANNEL</div>
+  <h2 class="section-title">소셜 미디어</h2>
+  <div class="sns-list fade-up">
+    <a href="https://instagram.com/jang_shoho" class="sns-item" target="_blank">
+      <div class="sns-icon" style="background:var(--sky-light);">📸</div>
+      <div class="sns-info">
+        <div class="sns-name">인스타그램</div>
+        <div class="sns-handle">@jang_shoho</div>
+      </div>
+      <div class="sns-followers">12.4만</div>
+    </a>
+    <a href="https://youtube.com/@jangshoho" class="sns-item" target="_blank">
+      <div class="sns-icon" style="background:#FFF3F3;">▶️</div>
+      <div class="sns-info">
+        <div class="sns-name">유튜브</div>
+        <div class="sns-handle">장쇼호 TV</div>
+      </div>
+      <div class="sns-followers">3.8만</div>
+    </a>
+    <a href="https://tiktok.com/@jangshoho_live" class="sns-item" target="_blank">
+      <div class="sns-icon" style="background:#F2FFF7;">🎵</div>
+      <div class="sns-info">
+        <div class="sns-name">틱톡</div>
+        <div class="sns-handle">@jangshoho_live</div>
+      </div>
+      <div class="sns-followers">6.1만</div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="cta-hook fade-up">
+    지금, 당신의 브랜드에<br>
+    <em>장쇼호가 필요합니다.</em>
+  </div>
+  <p class="cta-sub fade-up">
+    채용 · 협업 · 광고 문의 모두 환영합니다.<br>
+    편하게 연락 주세요 ✉️
+  </p>
+  <div class="cta-buttons fade-up">
+    <a href="https://open.kakao.com/o/sample" class="btn-kakao" target="_blank">
+      카카오톡 오픈채팅으로 문의하기
+    </a>
+    <a href="mailto:jang.shoho@email.com" class="btn-primary">
+      이메일로 문의하기
+    </a>
+  </div>
+  <div class="cta-divider" style="margin-top:22px;">포트폴리오</div>
+  <div class="fade-up">
+    <a href="#" class="btn-secondary">📄 포트폴리오 PDF 다운로드</a>
+  </div>
+  <div class="cta-email fade-up" style="margin-top:18px;">
+    이메일 : <a href="mailto:jang.shoho@email.com">jang.shoho@email.com</a>
+  </div>
+</section>
+
+<footer>© 2026 장쇼호 · All rights reserved</footer>
+
+<script>
+(function(){
+  // 슬라이드
+  var cur=0;
+  var track=document.getElementById('slideTrack');
+  var dots=document.querySelectorAll('.dot');
+  function goSlide(i){
+    cur=i;
+    track.style.transform='translateX(-'+(i*50)+'%)';
+    dots.forEach(function(d,idx){d.classList.toggle('active',idx===i);});
+  }
+  window.goSlide=goSlide;
+  setInterval(function(){goSlide((cur+1)%2);},3800);
+
+  // 탭 전환
+  function switchTab(i){
+    document.querySelectorAll('.vtab').forEach(function(t,idx){t.classList.toggle('active',idx===i);});
+    document.querySelectorAll('.vtab-panel').forEach(function(p,idx){p.classList.toggle('active',idx===i);});
+  }
+  window.switchTab=switchTab;
+
+  // 페이드 인
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+
+  // 네비 활성화
+  var secs=document.querySelectorAll('section[id]');
+  var navAs=document.querySelectorAll('.nav-inner a');
+  var navObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        navAs.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(function(s){navObs.observe(s);});
+})();
+</script>
+</body>
+</html>
